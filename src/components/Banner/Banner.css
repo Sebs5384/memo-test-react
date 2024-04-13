@@ -1,0 +1,18 @@
+.banner-background {
+    background-image: url(../../assets/images/qatar-background.jpg)
+}
+
+.banner-text {
+    color: gold;
+    font-family: Verdana, sans-serif;
+    font-size: 40px;
+}
+
+.banner-container {
+    height: 150px;
+}
+
+.world-cup {
+    width: 75px;
+    height: 75px;
+}

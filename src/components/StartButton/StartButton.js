@@ -1,11 +1,10 @@
-import './StartButton.css';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
-function StartButton({ value, className, visible = false, onClick = () => {} }) {
+function StartButton({ value, visible = true, onClick = () => {} }) {
     return (
-        <button className={cx('btn btn-success', className, {
-            'hidden': visible
+        <button className={cx('btn btn-success', {
+            'd-none': !visible
         })} onClick={onClick}>    
         {value}
         </button>

@@ -2,7 +2,7 @@ import Banner from "../components/Banner/Banner"
 
 function Memotest() {
     return(
-        <Banner></Banner>
+        <Banner value={"Memotest"}></Banner>
     );
 };
 

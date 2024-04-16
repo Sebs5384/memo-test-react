@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import StartButton from '../StartButton/StartButton';
 import ImageContainer from '../ImageContainer/ImageContainer';
 import useVisibilityState from '../../hooks/useVisibilityState';
-import worldCupTrohpy from '../../assets/images/world-cup-trophy.png';
+import worldCupTrohpy from '../../assets/images/misc/world-cup-trophy.png';
+import PropTypes from 'prop-types';
 import './Banner.css';
 
 
@@ -26,5 +27,8 @@ function Banner({value}) {
         </div>
     );
 };
+Banner.propTypes = {
+    value: PropTypes.string
+}
 
 export default Banner;

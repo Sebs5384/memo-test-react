@@ -1,22 +1,22 @@
 const playersName = [
-    "martinez", 
-    "molina", 
-    "montiel", 
-    "otamendi", 
-    "tagliaflico", 
-    "dePaul", 
-    "almada", 
-    "macallister", 
-    "diMaria", 
-    "messi", 
-    "alvarez", 
-    "scaloni"
+    "player-1-martinez", 
+    "player-2-molina", 
+    "player-3-montiel", 
+    "player-4-otamendi", 
+    "player-5-tagliaflico", 
+    "player-6-dePaul", 
+    "player-7-almada", 
+    "player-8-macallister", 
+    "player-9-diMaria", 
+    "player-10-messi", 
+    "player-11-alvarez", 
+    "player-12-scaloni"
 ];
 const MAX_CARDS_PER_SET = 12;
 
-function getPlayerCards(card, players = playersName) {
-    const playerCards = players.map((name, index) => {
-        return card.concat(`${index + 1}-${name}`)
+function getPlayerCards(cards = playersName) {
+    const playerCards = cards.map((card) => {
+        return card
     });
 
     return playerCards;

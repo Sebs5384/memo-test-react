@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function useVisibilityState(initialValue) {
-    const [visible, setVisible] = React.useState(initialValue);
-
+    const [visible, setVisible] = useState(initialValue);
+    
     const handleVisibilityChange = () => {
         setVisible(!visible);
     };

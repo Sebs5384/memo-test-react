@@ -3,7 +3,7 @@ const playersName = [
     "player-2-molina", 
     "player-3-montiel", 
     "player-4-otamendi", 
-    "player-5-tagliaflico", 
+    "player-5-tagliafico", 
     "player-6-dePaul", 
     "player-7-almada", 
     "player-8-macallister", 
@@ -19,7 +19,11 @@ function getPlayerCards(cards = playersName) {
         return card
     });
 
-    return playerCards;
+    const shuffledPlayerCards = shuffleArray(playerCards);
+    const setOfCards = getSetOfCards(shuffledPlayerCards);
+    const shuffledSetOfCards = shuffleArray(setOfCards);
+
+    return shuffledSetOfCards;
 };
 
 function getSetOfCards(cards){

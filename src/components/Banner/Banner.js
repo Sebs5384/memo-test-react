@@ -24,8 +24,8 @@ function Banner({visibility, startGame}) {
     );
 };
 Banner.propTypes = {
-    visibility: PropTypes.bool,
-    setVisibility: PropTypes.func
+    gameStarted: PropTypes.bool,
+    startGame: PropTypes.func
 };
 
 export default Banner;

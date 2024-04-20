@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './Banner.css';
 
 
-function Banner({visibility, startGame}) {
+function Banner({startGame}) {
     return(
         <div className="banner-container banner-background alert alert-dark container">
             <div className="row">
@@ -14,7 +14,7 @@ function Banner({visibility, startGame}) {
                 </div>
                 <div className="banner-text col-4 text-center">
                     <div>Memotest</div>
-                    <StartButton value="Start Game" visible={visibility} onClick={startGame}/>       
+                    <StartButton value="Start Game" onClick={startGame}/>       
                 </div>
                 <div className="banner-text col-4 text-start">
                     <ImageContainer src={worldCupTrohpy} alt={"world-cup"} className={"world-cup"}/>
@@ -24,7 +24,6 @@ function Banner({visibility, startGame}) {
     );
 };
 Banner.propTypes = {
-    gameStarted: PropTypes.bool,
     startGame: PropTypes.func
 };
 

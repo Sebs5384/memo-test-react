@@ -1,19 +1,23 @@
+import useVisibilityState from '../../hooks/useVisibilityState';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
-function StartButton({ value, visible = true, onClick = () => {} }) {
+function StartButton({ value, onClick = () => {} }) {
+    const { visible, handleVisibilityChange } = useVisibilityState(true);
+
     return (
         <button className={cx('btn btn-success', {
             'd-none': !visible
-        })} onClick={onClick}>    
+        })} onClick={() => {
+            onClick();
+            handleVisibilityChange();
+        }}>    
         {value}
         </button>
     );
 };
 StartButton.propTypes = {
     value: PropTypes.string,
-    className: PropTypes.string,
-    visible: PropTypes.bool,
     onClick: PropTypes.func,
 };
 

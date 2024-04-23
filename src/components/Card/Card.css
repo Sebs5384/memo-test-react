@@ -3,3 +3,20 @@
     height: 190px;
     border-color: gold;
 }
+
+.card {
+    transform: rotateY(180deg);
+    transition: 1s;
+}
+
+.overlay-card {
+    position: absolute;
+    transform: rotateY(180deg);
+    transition: 1s;
+    backface-visibility: hidden;
+}
+
+.flipped {
+    transform: rotateY(0deg);
+}
+

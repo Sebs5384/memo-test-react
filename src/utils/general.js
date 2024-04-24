@@ -50,6 +50,8 @@ function shuffleArray(array) {
     array.map((item, index) => {
         const randomIndex = Math.floor(Math.random() * (index + 1));
         [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
+
+        return array;
     });
 
     return array;

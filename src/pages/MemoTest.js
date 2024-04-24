@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Banner from "../components/Banner/Banner"
 import Board from "../components/Board/Board"
 import useMemotestGameState from "../hooks/useMemotestGameState";

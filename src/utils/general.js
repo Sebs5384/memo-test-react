@@ -16,12 +16,13 @@ const MAX_CARDS_PER_SET = 12;
 
 function getPlayerCards(cards = playersName) {
     const playerCards = cards.map((card) => {
-        return card
+        const playerCard = require(`../assets/images/players/${card}.jpg`);
+        return playerCard
     });
 
     const shuffledPlayerCards = shuffleArray(playerCards);
     const setOfCards = getSetOfCards(shuffledPlayerCards);
-    const shuffledSetOfCards = shuffleArray(setOfCards);
+    const shuffledSetOfCards = shuffleArray(setOfCards);    
 
     return shuffledSetOfCards;
 };
@@ -50,11 +51,18 @@ function shuffleArray(array) {
     array.map((item, index) => {
         const randomIndex = Math.floor(Math.random() * (index + 1));
         [array[index], array[randomIndex]] = [array[randomIndex], array[index]];
-
+        
         return array;
     });
 
     return array;
 };
 
-export { getPlayerCards, getSetOfCards, shuffleArray };
+function getUnflippedCards() {
+    const unflippedCardSprite = require(`../assets/images/misc/unflipped-card.jpg`);
+    const setOfUnflippedCards = Array(12).fill(unflippedCardSprite);
+
+    return setOfUnflippedCards;
+};
+
+export { getPlayerCards, getSetOfCards, shuffleArray, getUnflippedCards };

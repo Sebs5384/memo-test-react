@@ -1,7 +1,9 @@
 .memo-card {
-    width: 150px;
-    height: 190px;
+    width: 140px;
+    height: 180px;
     border-color: gold;
+    border-style: inset;
+    border-radius: 2%;
 }
 
 .front-card {
@@ -12,7 +14,9 @@
 .overlay-card {
     transform: rotateY(180deg);
     transition: 1s;
+    backface-visibility: hidden;
     position: absolute;
+    left: 70px;
 }
 
 .flipped {

@@ -9,8 +9,8 @@ function Board({ cards, unflippedCard }) {
                 <div className="row gx-1">
                     {cards.map((card, index) => {
                         return (
-                            <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container"}>
-                                <Card key={`card-${index + 1}`} image={card} unflippedCard={unflippedCard} className={"front-card"}/>
+                            <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container board-container"}>
+                                <Card key={`card-${index + 1}`} image={card} unflippedCard={unflippedCard}/>
                             </div>
                         );
                     })}

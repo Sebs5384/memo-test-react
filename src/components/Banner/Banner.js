@@ -1,11 +1,10 @@
 import StartButton from '../StartButton/StartButton';
 import ImageContainer from '../ImageContainer/ImageContainer';
 import worldCupTrohpy from '../../assets/images/misc/world-cup-trophy.png';
-import PropTypes from 'prop-types';
 import './Banner.css';
+import PropTypes from 'prop-types';
 
-
-function Banner({startGame}) {
+function Banner({ startGame }) {
     return(
         <div className="banner-container banner-background alert alert-dark container">
             <div className="row">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useCardState({ initialValue }) {
+function useCardState(initialValue) {
     const [flipped, setFlipped] = useState(initialValue);
 
     const handleFlippedCard = () => {

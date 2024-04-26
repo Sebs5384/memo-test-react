@@ -4,12 +4,12 @@ import Board from "../components/Board/Board"
 import useMemotestGameState from "../hooks/useMemotestGameState";
 
 function Memotest() {
-    const { cards, unflippedCard, startGame } = useMemotestGameState(false);
+    const { gameStarted, cards, unflippedCard, startGame } = useMemotestGameState(false);
 
     return(
         <>
             <Banner startGame={startGame}></Banner>
-            <Board cards={cards} unflippedCard={unflippedCard}></Board>
+            <Board gameStarted={gameStarted} cards={cards} unflippedCard={unflippedCard}></Board>
         </>
     );
 };

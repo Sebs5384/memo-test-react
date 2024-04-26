@@ -4,7 +4,7 @@ import "./Card.css";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-function Card({ image, unflippedCard }) {
+function Card({ image, unflippedCard, gameStarted }) {
     const { flipped, handleFlippedCard } = useCardState(false);
 
     return(
@@ -12,13 +12,19 @@ function Card({ image, unflippedCard }) {
             <ImageContainer 
                 src={unflippedCard} 
                 alt={"unflipped-card"} 
-                className={cx("memo-card front-card", {"flipped" : flipped})} 
+                className={cx("memo-card front-card", {
+                    "flipped" : flipped,
+                    "unclickable": !gameStarted
+                })} 
                 onClick={handleFlippedCard}
             />
             <ImageContainer 
                 src={image} 
                 alt={"card"} 
-                className={cx("memo-card overlay-card", {"flipped": flipped})} 
+                className={cx("memo-card overlay-card", {
+                    "flipped": flipped,
+                    "unclickable": !gameStarted
+                })} 
                 onClick={handleFlippedCard}
             />
         </>

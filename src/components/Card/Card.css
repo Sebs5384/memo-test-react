@@ -23,3 +23,8 @@
     transform: rotateY(0deg);
 }
 
+.unclickable {
+    pointer-events: none;
+}
+
+

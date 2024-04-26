@@ -9,10 +9,11 @@ function Board({ gameStarted, cards, unflippedCard }) {
             <div id="board">
                 <div className="row gx-1">
                     {cards.map((card, index) => {
+                        const playerName = card.split(".")[0].split("/").pop();
                         return (
                             <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container board-container"}>
                                 <Card 
-                                    key={`card-${index + 1}`} 
+                                    cardKey={`${playerName}`}
                                     image={card} 
                                     unflippedCard={unflippedCard}
                                     gameStarted={gameStarted}

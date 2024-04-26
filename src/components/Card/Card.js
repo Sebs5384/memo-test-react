@@ -4,7 +4,7 @@ import "./Card.css";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-function Card({ image, unflippedCard, gameStarted }) {
+function Card({ cardKey, image, unflippedCard, gameStarted }) {
     const { flipped, handleFlippedCard } = useCardState(false);
 
     return(

@@ -1,19 +1,27 @@
-import React, { Suspense, useState } from 'react';
-import Card from '../Card/Card';
-import './Board.css';
-import unflippedCard from '../../assets/images/misc/unflipped-card.jpg';
+import Card from "../Card/Card";
+import "./Board.css";
+import PropTypes from "prop-types";
 
-function Board({ cards, flipped = false }) { 
-    return(
+function Board({ cards, unflippedCard }) {
+    return (
         <div className="container text-center">
-            <div className="row gx-1">
-                {cards.map((card, index) => {
-                    const image = require(`../../assets/images/players/${card}.jpg`);
-                    return <Card key={index + 1} image={image} className={"col-3 gy-1 cards-container"} flipped={flipped}/>;
-                })}
+            <div id="board">
+                <div className="row gx-1">
+                    {cards.map((card, index) => {
+                        return (
+                            <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container"}>
+                                <Card key={`card-${index + 1}`} image={card} unflippedCard={unflippedCard} className={"front-card"}/>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );
 };
+Board.propTypes = {
+    cards: PropTypes.array,
+    unflippedCard: PropTypes.string
+};
 
-export default Board;
+export default Board;   

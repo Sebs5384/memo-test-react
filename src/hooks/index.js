@@ -1,5 +1,5 @@
 import useMemotestGameState from "./useMemotestGameState";
-import useCardFlipState from "./useCardFlipState";
+import useCardState from "./useCardState";
 import useVisibilityState from "./useVisibilityState";
 
-export { useMemotestGameState, useCardFlipState, useVisibilityState };
+export { useMemotestGameState, useCardState, useVisibilityState };

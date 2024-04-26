@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { getPlayerCards } from "../utils/general"
+import { getPlayerCards, getUnflippedCard } from "../utils/general"
 
 function useMemotestGameState({ initialValue }) {
     const [gameStarted, setGameStarted] = useState(initialValue);
-    const cards = gameStarted ? getPlayerCards() : [];
+    const playerCards = getPlayerCards();
+    const unflippedCard = getUnflippedCard();
+    const cards = gameStarted ? playerCards : Array(12).fill(unflippedCard);
 
     const startGame = () => {    
         setGameStarted(!gameStarted);
     };
     
 
-    return { gameStarted, cards, startGame };
+    return { gameStarted, cards, unflippedCard, startGame };
 };
 
 export default useMemotestGameState;

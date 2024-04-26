@@ -58,11 +58,10 @@ function shuffleArray(array) {
     return array;
 };
 
-function getUnflippedCards() {
+function getUnflippedCard() {
     const unflippedCardSprite = require(`../assets/images/misc/unflipped-card.jpg`);
-    const setOfUnflippedCards = Array(12).fill(unflippedCardSprite);
 
-    return setOfUnflippedCards;
+    return unflippedCardSprite;
 };
 
-export { getPlayerCards, getSetOfCards, shuffleArray, getUnflippedCards };
+export { getPlayerCards, getSetOfCards, shuffleArray, getUnflippedCard };

@@ -1,19 +1,23 @@
-import ImageContainer from '../ImageContainer/ImageContainer';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import './Card.css';
+import { useCardState } from "../../hooks/index";
+import ImageContainer from "../ImageContainer/ImageContainer";
+import "./Card.css";
+import cx from "classnames";
+import PropTypes from "prop-types";
 
-function Card({ image, className, flipped = false, onClick = () => {} }) {
+function Card({ image, unflippedCard, className }) {
+    const { flipped, handleFlippedCard } = useCardState(false);
+
     return(
-        <div className={cx(className, { "flipped": flipped })} onClick={onClick}>
-            <ImageContainer src={image} alt={"card"} className={"memo-card"}/>
-        </div>
+        <>
+            <ImageContainer src={unflippedCard} alt={"unflipped-card"} className={cx("memo-card", className, {"flipped" : flipped})} onClick={handleFlippedCard}/>
+            <ImageContainer src={image} alt={"card"} className={cx("memo-card", className, {"flipped": flipped})} onClick={handleFlippedCard}/>
+        </>
     );
 };
 Card.propTypes = {
-    className: PropTypes.string,
-    flipped: PropTypes.bool,
-    onClick: PropTypes.func
+    image: PropTypes.string,
+    unflippedCard: PropTypes.string,
+    className: PropTypes.string
 };
 
 export default Card;

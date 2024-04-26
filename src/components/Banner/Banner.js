@@ -9,14 +9,14 @@ function Banner({startGame}) {
     return(
         <div className="banner-container banner-background alert alert-dark container">
             <div className="row">
-                <div className="banner-text col-4 text-end">
+                <div className="col-4 text-end">
                     <ImageContainer src={worldCupTrohpy} alt={"world-cup"} className={"world-cup"}/>
                 </div>
-                <div className="banner-text col-4 text-center">
-                    <div>Memotest</div>
+                <div className="col-4 text-center">
+                    <div className="banner-text">Memotest</div>
                     <StartButton value="Start Game" onClick={startGame}/>       
                 </div>
-                <div className="banner-text col-4 text-start">
+                <div className="col-4 text-start">
                     <ImageContainer src={worldCupTrohpy} alt={"world-cup"} className={"world-cup"}/>
                 </div>
             </div>

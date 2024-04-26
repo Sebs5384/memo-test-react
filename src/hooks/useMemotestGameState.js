@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getPlayerCards, getUnflippedCard } from "../utils/general"
 
-function useMemotestGameState({ initialValue }) {
+function useMemotestGameState(initialValue) {
     const [gameStarted, setGameStarted] = useState(initialValue);
     const playerCards = getPlayerCards();
     const unflippedCard = getUnflippedCard();

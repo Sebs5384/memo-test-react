@@ -17,9 +17,9 @@ const MAX_CARDS_PER_SET = 12;
 function getPlayerCards(cards = playersName) {
     const playerCards = cards.map((card) => {
         const playerCard = require(`../assets/images/players/${card}.jpg`);
-        return playerCard
+        return  playerCard;
     });
-
+    
     const shuffledPlayerCards = shuffleArray(playerCards);
     const setOfCards = getSetOfCards(shuffledPlayerCards);
     const shuffledSetOfCards = shuffleArray(setOfCards);    

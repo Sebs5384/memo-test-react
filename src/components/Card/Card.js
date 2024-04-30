@@ -5,7 +5,7 @@ import cx from "classnames";
 import PropTypes from "prop-types";
 
 function Card({ cardKey, image, unflippedCard, gameStarted }) {
-    const { flipped, handleFlippedCard } = useCardState({initialValue: false, playerName: cardKey});
+    const { flipped, matched, handleFlippedCard } = useCardState({initialValue: false, playerName: cardKey});
 
     return(
         <>

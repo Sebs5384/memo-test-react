@@ -1,27 +1,27 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
-function useCardState({ initialValue, playerName }) {
+function useCardState({initialValue}) {
     const [flipped, setFlipped] = useState(initialValue);
-    const [matched, setMatched] = useState(false);
-    const currentClickedCard = useRef("")
-    const previousClickedCard = useRef("")
+    const [matchedCards, setMatchedCards] = useState([]);
+    const [matchedPairs, setMatchedPairs] = useState([]);
+    const MAX_FLIPPED_CARDS = 2;
 
-    const handleFlippedCard = () => {
+    const handleFlippedCard = (key) => {
+        if(!matchedCards.includes(key) && matchedCards.length < MAX_FLIPPED_CARDS) {
+            setMatchedCards([...matchedCards, key]);
 
-        currentClickedCard.current = playerName;
-        const matchedCards = previousClickedCard.current === currentClickedCard.current;
+            if(matchedCards.length === MAX_FLIPPED_CARDS) {
+                const [card1, card2] = matchedCards;
 
-        if(matchedCards) {
-            console.log(`${currentClickedCard.current} matched with ${previousClickedCard.current}`);
-            setMatched(true);
-        };
-        previousClickedCard.current = currentClickedCard.current;
-        
+                if(card1.split(".")[0] === card2.split(".")[0]) {
+                    
+                }
+            }
+        }
         setFlipped(!flipped);
     };
 
-
-    return { flipped, matched, handleFlippedCard }
+    return { flipped, handleFlippedCard }
 };
 
 export default useCardState;

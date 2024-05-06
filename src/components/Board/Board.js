@@ -1,9 +1,11 @@
+import { useMatchingState } from "../../hooks/index";
 import Card from "../Card/Card";
 import "./Board.css";
 import PropTypes from "prop-types";
-import cx from "classnames";
 
-function Board({ gameStarted, cards, unflippedCard }) {
+function Board({ gameStarted, cards, backCardSprite }) {
+    const { matchingPairs, handleMatching } = useMatchingState();
+
     return (
         <div className={"container text-center"}>
             <div id="board">
@@ -14,9 +16,10 @@ function Board({ gameStarted, cards, unflippedCard }) {
                             <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container board-container"}>
                                 <Card 
                                     cardKey={`${playerName}`}
-                                    image={card} 
-                                    unflippedCard={unflippedCard}
+                                    image={card}
+                                    backCardSprite={backCardSprite}
                                     gameStarted={gameStarted}
+                                    matching={handleMatching}
                                 />
                             </div>
                         );

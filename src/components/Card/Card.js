@@ -1,22 +1,27 @@
-import { useCardState } from "../../hooks/index";
+import { useFlipState } from "../../hooks/index";
 import ImageContainer from "../ImageContainer/ImageContainer";
 import "./Card.css";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-function Card({ cardKey, image, unflippedCard, gameStarted }) {
-    const { flipped, matched, handleFlippedCard } = useCardState({initialValue: false, playerName: cardKey});
+function Card({ cardKey, image, backCardSprite, gameStarted, matching }) {
+    const { flipped, handleFlippedCard } = useFlipState({ initialValue: false });
+
+    const cardOnClick = () => {
+        matching(cardKey);
+        handleFlippedCard();
+    };
 
     return(
         <>
             <ImageContainer 
-                src={unflippedCard} 
+                src={backCardSprite} 
                 alt={"unflipped-card"} 
                 className={cx("memo-card front-card", {
                     "flipped" : flipped,
                     "unclickable": !gameStarted
                 })} 
-                onClick={handleFlippedCard}
+                onClick={cardOnClick}
             />
             <ImageContainer 
                 src={image} 
@@ -25,7 +30,7 @@ function Card({ cardKey, image, unflippedCard, gameStarted }) {
                     "flipped": flipped,
                     "unclickable": !gameStarted
                 })} 
-                onClick={handleFlippedCard}
+                onClick={cardOnClick}
             />
         </>
     );

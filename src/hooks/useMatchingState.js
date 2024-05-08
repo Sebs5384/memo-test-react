@@ -7,18 +7,22 @@ function useMatchingState() {
 
     const handleMatching = (key) => {
         const BELOW_MAX_FLIPPED_CARDS = flippedCards.length < MAX_FLIPPED_CARDS
-        const isNewFlippedCard = !flippedCards.includes(key)
 
-        if(isNewFlippedCard && BELOW_MAX_FLIPPED_CARDS) {
+        if(BELOW_MAX_FLIPPED_CARDS) {
             setFlippedCards([...flippedCards, key]);
                 
             const updatedFlippedCardsLength = flippedCards.length + 1;
-            console.log(updatedFlippedCardsLength)
 
             if(updatedFlippedCardsLength === MAX_FLIPPED_CARDS) {
                 const previousCard = flippedCards[0];
+                const currentCard = key;
 
-                console.log(previousCard)   
+                if(previousCard === currentCard) {
+                    setMatchedPairs([...matchedPairs, previousCard, currentCard]);
+                    setFlippedCards([]);
+                } else {
+                    setFlippedCards([]);    
+                };
             };
         };
     };

@@ -4,12 +4,10 @@ import "./Card.css";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-function Card({ cardKey, image, backCardSprite, gameStarted, matching }) {
-    const { flipped, handleFlippedCard } = useFlipState({ initialValue: false });
+function Card({ cardKey, image, backCardSprite, gameStarted, isMatching, isActive, handleMatching }) {
 
     const cardOnClick = () => {
-        matching(cardKey);
-        handleFlippedCard();
+        handleMatching(cardKey);
     };
 
     return(
@@ -18,8 +16,8 @@ function Card({ cardKey, image, backCardSprite, gameStarted, matching }) {
                 src={backCardSprite} 
                 alt={"unflipped-card"} 
                 className={cx("memo-card front-card", {
-                    "flipped" : flipped,
-                    "unclickable": !gameStarted
+                    "flipped" : isActive,
+                    "unclickable": !gameStarted || isMatching
                 })} 
                 onClick={cardOnClick}
             />
@@ -27,8 +25,8 @@ function Card({ cardKey, image, backCardSprite, gameStarted, matching }) {
                 src={image} 
                 alt={"card"} 
                 className={cx("memo-card overlay-card", {
-                    "flipped": flipped,
-                    "unclickable": !gameStarted
+                    "flipped": isActive,
+                    "unclickable": !gameStarted || isMatching
                 })} 
                 onClick={cardOnClick}
             />

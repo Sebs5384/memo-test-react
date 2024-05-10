@@ -4,22 +4,26 @@ import "./Board.css";
 import PropTypes from "prop-types";
 
 function Board({ gameStarted, cards, backCardSprite }) {
-    const { matchingPairs, handleMatching } = useMatchingState();
+    const { activeCards, matchedPairs, handleMatching } = useMatchingState();
 
     return (
         <div className={"container text-center"}>
             <div id="board">
                 <div className="row gx-1">
                     {cards.map((card, index) => {
-                        const playerName = card.split(".")[0].split("/").pop();
+                        console.log(card);
+                        const playerCard = card.replace(/-\d$/, "");
+                        const playerName = card.split(".")[0].split("/").pop()
                         return (
                             <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container board-container"}>
                                 <Card 
                                     cardKey={`${playerName}`}
-                                    image={card}
+                                    image={playerCard}
                                     backCardSprite={backCardSprite}
                                     gameStarted={gameStarted}
-                                    matching={handleMatching}
+                                    isMatching={matchedPairs.includes(playerName)}
+                                    isActive={activeCards.some(card => card.key === playerName)}
+                                    handleMatching={handleMatching}
                                 />
                             </div>
                         );

@@ -12,7 +12,6 @@ const playersName = [
     "player-11-alvarez", 
     "player-12-scaloni"
 ];
-const MAX_CARDS_PER_SET = 12;
 
 function getPlayerCards(cards = playersName) {
     const playerCards = cards.map((card) => {
@@ -28,6 +27,7 @@ function getPlayerCards(cards = playersName) {
 };
 
 function getSetOfCards(cards){
+    const MAX_CARDS_PER_SET = 12;
     let setOfCards = [];
 
     for(let i = 0; i < cards.length; i++) {
@@ -35,7 +35,7 @@ function getSetOfCards(cards){
             if(setOfCards.includes(cards[i])) {
                 continue;
             } else if(cards[i] === cards[j]) {
-                setOfCards.push(cards[i], cards[j]);
+                setOfCards.push(`${cards[i]}-1`, `${cards[j]}-2`);
             };
         };
 

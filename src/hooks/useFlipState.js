@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function useFlipState({ initialValue = false }) {
-    const [flipped, setFlippedCard] = useState(initialValue);
+function useFlipState({ active, playerName }) {
+    const [flipped, setFlippedCard] = useState(false);
 
-    const handleFlippedCard = () => {
-        setFlippedCard(!flipped);
-    };
+    useEffect(() => {
+        if(active.includes(playerName)) {
+            setFlippedCard(true);
+        }
+    }, [active, playerName]);
 
-    return { flipped, handleFlippedCard };
+    return { flipped };
 };
 
 export default useFlipState;

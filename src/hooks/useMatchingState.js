@@ -1,33 +1,33 @@
 import { useState } from "react";
 
 function useMatchingState() {
-    const [flippedCards, setFlippedCards] = useState([]);
+    const [activeCards, setActiveCards] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState([]);
     const MAX_FLIPPED_CARDS = 2;
 
     const handleMatching = (key) => {
-        const BELOW_MAX_FLIPPED_CARDS = flippedCards.length < MAX_FLIPPED_CARDS
+        const BELOW_MAX_FLIPPED_CARDS = activeCards.length < MAX_FLIPPED_CARDS
 
         if(BELOW_MAX_FLIPPED_CARDS) {
-            setFlippedCards([...flippedCards, key]);
+            setActiveCards([...activeCards, key]);
                 
-            const updatedFlippedCardsLength = flippedCards.length + 1;
+            const updatedFlippedCardsLength = activeCards.length + 1;
 
             if(updatedFlippedCardsLength === MAX_FLIPPED_CARDS) {
-                const previousCard = flippedCards[0];
+                const previousCard = activeCards[0];
                 const currentCard = key;
 
-                if(previousCard === currentCard) {
-                    setMatchedPairs([...matchedPairs, previousCard, currentCard]);
-                    setFlippedCards([]);
+                if(previousCard === key) {
+                    setMatchedPairs([...matchedPairs, previousCard, key]);
+                    setActiveCards([])
                 } else {
-                    setFlippedCards([]);    
+                    setActiveCards([])
                 };
             };
         };
     };
 
-    return { matchedPairs, handleMatching }
+    return { activeCards, matchedPairs, handleMatching }
 };
 
 export default useMatchingState;

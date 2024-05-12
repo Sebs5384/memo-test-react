@@ -64,4 +64,19 @@ function getUnflippedCard() {
     return unflippedCardSprite;
 };
 
-export { getPlayerCards, getSetOfCards, shuffleArray, getUnflippedCard };
+function getPlayerName(card){
+    const playerSpriteName = card.replace(/-\d$/, "");
+    const playerName = card.split(".")[0].split("/").pop();
+    const cardSuffix = card.split(".")[2].replace("jpg", "");
+    const playerNameWithSuffix = `${playerName}${cardSuffix}`;
+
+    return { playerSpriteName, playerNameWithSuffix }
+};
+
+export { 
+    getPlayerCards, 
+    getSetOfCards, 
+    shuffleArray, 
+    getUnflippedCard,
+    getPlayerName
+};

@@ -1,4 +1,5 @@
 import { useMatchingState } from "../../hooks/index";
+import { getPlayerName } from "../../utils/general";
 import Card from "../Card/Card";
 import "./Board.css";
 import PropTypes from "prop-types";
@@ -11,18 +12,17 @@ function Board({ gameStarted, cards, backCardSprite }) {
             <div id="board">
                 <div className="row gx-1">
                     {cards.map((card, index) => {
-                        console.log(card);
-                        const playerCard = card.replace(/-\d$/, "");
-                        const playerName = card.split(".")[0].split("/").pop()
+                        const { playerSpriteName, playerNameWithSuffix } = getPlayerName(card);
+                        
                         return (
                             <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container board-container"}>
                                 <Card 
-                                    cardKey={`${playerName}`}
-                                    image={playerCard}
+                                    cardKey={`${playerNameWithSuffix}`}
+                                    image={playerSpriteName}
                                     backCardSprite={backCardSprite}
                                     gameStarted={gameStarted}
-                                    isMatching={matchedPairs.includes(playerName)}
-                                    isActive={activeCards.some(card => card.key === playerName)}
+                                    isMatching={matchedPairs.includes(playerNameWithSuffix)}
+                                    isActive={activeCards.some(card => card.key === playerNameWithSuffix)}
                                     handleMatching={handleMatching}
                                 />
                             </div>

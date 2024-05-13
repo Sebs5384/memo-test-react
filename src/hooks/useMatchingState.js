@@ -5,23 +5,26 @@ function useMatchingState() {
     const [matchedPairs, setMatchedPairs] = useState([]);
     const MAX_FLIPPED_CARDS = 2;
 
-    const handleMatching = (key) => {
-        const BELOW_MAX_FLIPPED_CARDS = activeCards.length < MAX_FLIPPED_CARDS
-
-        if(BELOW_MAX_FLIPPED_CARDS) {
+    const handleMatching = (key, index) => {
+        
+        const belowMaxFlippedCards = activeCards.length < MAX_FLIPPED_CARDS
+        if(belowMaxFlippedCards) {
             setActiveCards([...activeCards, key]);
                 
-            const updatedFlippedCardsLength = activeCards.length + 1;
+            const activeCardsLength = activeCards.length + 1;
 
-            if(updatedFlippedCardsLength === MAX_FLIPPED_CARDS) {
-                const previousCard = activeCards[0];
-                const currentCard = key;
+            if(activeCardsLength === MAX_FLIPPED_CARDS) {
+                const previousCardSuffix = activeCards[0].split("-")[3];
+                const previousCard = activeCards[0].replace(/-[^-]*$/, "")
+                const currentCardSuffix = key.split("-")[3];
+                const currentCard = key.replace(/-[^-]*$/, "")
+                
 
-                if(previousCard === key) {
-                    setMatchedPairs([...matchedPairs, previousCard, key]);
-                    setActiveCards([])
+                if(previousCard === currentCard) {
+                    setMatchedPairs([...matchedPairs, `${previousCard}-${previousCardSuffix}`, `${currentCard}-${currentCardSuffix}`]);
+                    setActiveCards([]);
                 } else {
-                    setActiveCards([])
+                    setTimeout(() => {setActiveCards([])}, 1000);
                 };
             };
         };

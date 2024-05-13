@@ -22,7 +22,7 @@ function Board({ gameStarted, cards, backCardSprite }) {
                                     backCardSprite={backCardSprite}
                                     gameStarted={gameStarted}
                                     isMatching={matchedPairs.includes(playerNameWithSuffix)}
-                                    isActive={activeCards.some(card => card.key === playerNameWithSuffix)}
+                                    isActive={activeCards.some(card => card === playerNameWithSuffix)}
                                     handleMatching={handleMatching}
                                 />
                             </div>

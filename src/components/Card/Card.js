@@ -1,4 +1,3 @@
-import { useFlipState } from "../../hooks/index";
 import ImageContainer from "../ImageContainer/ImageContainer";
 import "./Card.css";
 import cx from "classnames";
@@ -34,8 +33,13 @@ function Card({ cardKey, image, backCardSprite, gameStarted, isMatching, isActiv
     );
 };
 Card.propTypes = {
+    cardKey: PropTypes.string,
     image: PropTypes.string,
-    unflippedCard: PropTypes.string
+    backCardSprite: PropTypes.string,
+    gameStarted: PropTypes.bool,
+    isMatching: PropTypes.bool,
+    isActive: PropTypes.bool,
+    handleMatching: PropTypes.func
 };
 
 export default Card;

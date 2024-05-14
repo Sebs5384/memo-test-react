@@ -34,8 +34,9 @@ function Board({ gameStarted, cards, backCardSprite }) {
     );
 };
 Board.propTypes = {
+    gameStarted: PropTypes.bool,
     cards: PropTypes.array,
-    unflippedCard: PropTypes.string
+    backCardSprite: PropTypes.string
 };
 
 export default Board;   

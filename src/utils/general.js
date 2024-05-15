@@ -13,6 +13,14 @@ const playersName = [
     "player-12-scaloni"
 ];
 
+function getCards(gameStatus) {
+    const playerCards = getPlayerCards();
+    const unflippedCardSprite = getUnflippedCard();
+    const cards = gameStatus ? playerCards : Array(12).fill(unflippedCardSprite);
+
+    return { cards, unflippedCardSprite };
+};
+
 function getPlayerCards(cards = playersName) {
     const playerCards = cards.map((card) => {
         const playerCard = require(`../assets/images/players/${card}.jpg`);
@@ -74,9 +82,8 @@ function getPlayerName(card){
 };
 
 export { 
-    getPlayerCards, 
+    getCards,
     getSetOfCards, 
     shuffleArray, 
-    getUnflippedCard,
     getPlayerName
 };

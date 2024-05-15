@@ -1,15 +1,23 @@
 import React from "react";
 import Banner from "../components/Banner/Banner"
 import Board from "../components/Board/Board"
-import useMemotestGameState from "../hooks/useMemotestGameState";
+import { useMemotestGameState, useMatchingState } from "../hooks/index";
 
 function Memotest() {
-    const { gameStarted, cards, unflippedCardSprite, startGame } = useMemotestGameState(false);
+    const { gameStarted, cards, unflippedCardSprite, startGame, restartGame } = useMemotestGameState(false);
+    const { activeCards, matchedPairs, handleMatching } = useMatchingState();
 
     return(
         <>
-            <Banner startGame={startGame}></Banner>
-            <Board gameStarted={gameStarted} cards={cards} backCardSprite={unflippedCardSprite}></Board>
+            <Banner startGame={startGame} restartGame={restartGame}></Banner>
+            <Board 
+                gameStarted={gameStarted} 
+                cards={cards} 
+                backCardSprite={unflippedCardSprite} 
+                activeCards={activeCards} 
+                matchedPairs={matchedPairs} 
+                handleMatching={handleMatching}
+            ></Board>
         </>
     );
 };

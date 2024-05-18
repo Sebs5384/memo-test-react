@@ -9,7 +9,12 @@ function Memotest() {
 
     return(
         <>
-            <Banner startGame={startGame} restartGame={restartGame}></Banner>
+            <Banner 
+                startGame={startGame} 
+                restartGame={restartGame} 
+                gameStarted={gameStarted}
+                matchedPairs={matchedPairs}
+            ></Banner>
             <Board 
                 gameStarted={gameStarted} 
                 gameEnded={gameEnded}

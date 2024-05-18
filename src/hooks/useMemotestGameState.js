@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { getCards } from "../utils/general"
 
-function useMemotestGameState(initialValue) {
+function useMemotestGameState({ initialValue }) {
     const [gameStarted, setGameStarted] = useState(initialValue);
     const [gameRestarted, setGameRestarted] = useState(initialValue);
     const [cards, setCards] = useState([]);
     const [unflippedCardSprite, setUnflippedCardSprite] = useState(null);
+
+    useEffect(() => {
+        generateCards(gameStarted);
+    }, [gameStarted]);
 
     const generateCards = (gameStatus) => {
         const { cards, unflippedCardSprite } = getCards(gameStatus);
@@ -13,16 +17,12 @@ function useMemotestGameState(initialValue) {
         setUnflippedCardSprite(unflippedCardSprite);
     };
 
-    useEffect(() => {
-        generateCards(!gameStarted);
-    }, [gameRestarted]);
-
     const startGame = () => {
-        setGameStarted(!gameStarted);
+        setGameStarted(true);
     };
 
     const restartGame = () => {
-        setGameRestarted(!gameRestarted);
+        setGameRestarted(prevState => !prevState);
     };
 
     return {
@@ -33,7 +33,6 @@ function useMemotestGameState(initialValue) {
         startGame,
         restartGame
     };
-
 };
 
 export default useMemotestGameState;

@@ -1,19 +1,16 @@
-import { useMatchingState } from "../../hooks/index";
+import { useEffect } from "react";
 import { getPlayerName } from "../../utils/general";
 import Card from "../Card/Card";
 import "./Board.css";
 import PropTypes from "prop-types";
 
-function Board({ gameStarted, cards, backCardSprite }) {
-    const { activeCards, matchedPairs, handleMatching } = useMatchingState();
-
+function Board({ gameStarted, gameEnded, cards, backCardSprite, activeCards, matchedPairs, handleMatching }) {
     return (
         <div className={"container text-center"}>
             <div id="board">
                 <div className="row gx-1">
                     {cards.map((card, index) => {
                         const { playerSpriteName, playerNameWithSuffix } = getPlayerName(card);
-                        
                         return (
                             <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container board-container"}>
                                 <Card 

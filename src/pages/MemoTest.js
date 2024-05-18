@@ -4,14 +4,15 @@ import Board from "../components/Board/Board"
 import { useMemotestGameState, useMatchingState } from "../hooks/index";
 
 function Memotest() {
-    const { gameStarted, cards, unflippedCardSprite, startGame, restartGame } = useMemotestGameState(false);
-    const { activeCards, matchedPairs, handleMatching } = useMatchingState();
+    const { gameStarted, gameRestarted, cards, unflippedCardSprite, startGame, restartGame } = useMemotestGameState({ initialValue: false });
+    const { activeCards, matchedPairs, gameEnded, handleMatching } = useMatchingState();
 
     return(
         <>
             <Banner startGame={startGame} restartGame={restartGame}></Banner>
             <Board 
                 gameStarted={gameStarted} 
+                gameEnded={gameEnded}
                 cards={cards} 
                 backCardSprite={unflippedCardSprite} 
                 activeCards={activeCards} 

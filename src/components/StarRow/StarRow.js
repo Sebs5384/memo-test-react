@@ -11,17 +11,26 @@ function StarRow({ matchedPairs }) {
                 <ImageContainer 
                     src={Star} 
                     alt={"Star"} 
-                    className={cx("star")}
+                    className={cx("star star-opacity-0", {
+                        "star-opacity-0-5": matchedPairs.length === 2,
+                        "star-opacity-1": matchedPairs.length === 4,
+                    })}
                 />
                 <ImageContainer 
                     src={Star} 
                     alt={"Star"} 
-                    className={cx("star")}
+                    className={cx("star star-opacity-0", { 
+                        "star-opacity-0-5": matchedPairs.length === 2,
+                        "star-opacity-1": matchedPairs.length === 4,
+                    })}
                 />
                 <ImageContainer 
                     src={Star} 
                     alt={"Star"} 
-                    className={cx("star")}
+                    className={cx("star star-opacity-0",{ 
+                        "star-opacity-0-5": matchedPairs.length === 2,
+                        "star-opacity-1": matchedPairs.length === 4,
+                    })}
                 />
             </div>
         </>

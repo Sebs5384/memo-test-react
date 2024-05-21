@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import ImageContainer from "../ImageContainer/ImageContainer";
 import Star from "../../assets/images/misc/star.png";
 import "./StarRow.css";

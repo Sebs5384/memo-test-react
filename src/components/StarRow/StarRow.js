@@ -6,11 +6,6 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 
 function StarRow({ matchedPairs }) {
-
-    useEffect(() => {
-        console.log("matchedPairs", matchedPairs);
-    }, [matchedPairs]);
-
     return (
         <>
             <div>

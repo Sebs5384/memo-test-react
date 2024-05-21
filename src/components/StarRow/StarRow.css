@@ -3,14 +3,10 @@
     height: 30px;
 };
 
-.star-opacity-0 {
+.opacity-0 {
     opacity: 0;
 };
 
-.star-opacity-0-5 {
-    opacity: 0.5;
-};
-
-.star-opacity-1 {
-    opacity: 1.0;
+.opacity-1 {
+    opacity: 1;
 };

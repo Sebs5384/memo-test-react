@@ -32,3 +32,5 @@ function useOpacityState({ gameEnded }) {
 
     return { opacity };
 };
+
+export default useOpacityState;

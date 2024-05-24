@@ -1,11 +1,12 @@
 import React from "react";
 import Banner from "../components/Banner/Banner"
 import Board from "../components/Board/Board"
-import { useMemotestGameState, useMatchingState } from "../hooks/index";
+import { useMemotestGameState, useMatchingState, useOpacityState } from "../hooks/index";
 
 function Memotest() {
     const { gameStarted, gameRestarted, cards, unflippedCardSprite, startGame, restartGame } = useMemotestGameState({ initialValue: false });
     const { activeCards, matchedPairs, gameEnded, handleMatching } = useMatchingState();
+    const { opacity } = useOpacityState({ gameEnded });
 
     return(
         <>
@@ -14,6 +15,7 @@ function Memotest() {
                 restartGame={restartGame} 
                 gameStarted={gameStarted}
                 matchedPairs={matchedPairs}
+                bannerOpacity={opacity}
             ></Banner>
             <Board 
                 gameStarted={gameStarted} 
@@ -23,6 +25,7 @@ function Memotest() {
                 activeCards={activeCards} 
                 matchedPairs={matchedPairs} 
                 handleMatching={handleMatching}
+                boardOpacity={opacity}
             ></Board>
         </>
     );

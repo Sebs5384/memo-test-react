@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
 import goal from "../assets/audio/goal.mp3";
 import whistleSound from "../assets/audio/whistle.mp3";
-import argentinaChant from "../assets/audio/argentina-chant.mp3";
 
 function useMatchingState() {
     const [activeCards, setActiveCards] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState([]);
-    const [gameEnded, setGameEnded] = useState(false);
 
     const whistleBlow = new Audio(whistleSound);
     const goalSound = new Audio(goal);
-    const argentinaChantSound = new Audio(argentinaChant);
-    const MAX_MATCHED_PAIRS = 12;
     const MAX_FLIPPED_CARDS = 2;
 
     const handleMatching = (key, index) => {
@@ -40,14 +36,7 @@ function useMatchingState() {
         };
     };
 
-    useEffect(() => {
-        if(matchedPairs.length === MAX_MATCHED_PAIRS) {
-            argentinaChantSound.play();
-            setGameEnded(true);
-        };
-    }, [matchedPairs]);
-
-    return { activeCards, matchedPairs, gameEnded, handleMatching }
+    return { activeCards, matchedPairs, handleMatching }
 };
 
 export default useMatchingState;

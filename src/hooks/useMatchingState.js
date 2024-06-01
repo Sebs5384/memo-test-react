@@ -36,7 +36,11 @@ function useMatchingState() {
         };
     };
 
-    return { activeCards, matchedPairs, handleMatching }
+    const cleanMatchedPairs = () => {
+        setMatchedPairs([]);
+    }
+
+    return { activeCards, matchedPairs, handleMatching, cleanMatchedPairs };
 };
 
 export default useMatchingState;

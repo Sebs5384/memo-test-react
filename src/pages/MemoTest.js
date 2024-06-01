@@ -4,8 +4,20 @@ import Board from "../components/Board/Board"
 import { useMemotestGameState, useMatchingState, useOpacityState, useBodyBackground } from "../hooks/index";
 
 function Memotest() {
-    const { activeCards, matchedPairs, handleMatching } = useMatchingState();
-    const { gameStarted, gameRestarted, gameEnded, cards, unflippedCardSprite, startGame, restartGame } = useMemotestGameState({ initialValue: false, matchedCards: matchedPairs });
+    const { activeCards, matchedPairs, handleMatching, cleanMatchedPairs } = useMatchingState();
+    const { 
+        gameStarted, 
+        gameRestarted, 
+        gameEnded, 
+        cards, 
+        unflippedCardSprite, 
+        startGame, 
+        restartGame 
+    } = useMemotestGameState({ 
+        initialValue: false, 
+        matchedCards: matchedPairs, 
+        cleanMatchedPairs 
+    });
     const { opacity } = useOpacityState({ gameEnded });
 
     useBodyBackground({ gameHasEnded: gameEnded });

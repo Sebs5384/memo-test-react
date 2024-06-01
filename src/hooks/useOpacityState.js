@@ -30,6 +30,11 @@ function useOpacityState({ gameEnded }) {
         };
     }, [gameEnded, opacityTransition]);
 
+    useEffect(() => {
+        setOpacity(1);
+        setOpacityTransition("decrease");
+    }, [gameEnded]);
+
     return { opacity };
 };
 

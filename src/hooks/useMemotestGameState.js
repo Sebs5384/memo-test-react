@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getCards } from "../utils/general"
 import argentinianChantSound from "../assets/audio/argentina-chant.mp3";
 
-function useMemotestGameState({ initialValue, matchedCards }) {
+function useMemotestGameState({ initialValue, matchedCards, cleanMatchedPairs }) {
     const [gameStarted, setGameStarted] = useState(initialValue);
     const [gameRestarted, setGameRestarted] = useState(initialValue);
     const [gameEnded, setGameEnded] = useState(initialValue);
     const [cards, setCards] = useState([]);
     const [unflippedCardSprite, setUnflippedCardSprite] = useState(null);
-    const gameEndedSound = new Audio(argentinianChantSound);
+    const gameEndedSound = useRef(new Audio(argentinianChantSound));
     const MAX_MATCHED_CARDS = 12;
 
     const generateCards = (gameStatus) => {
@@ -23,9 +23,20 @@ function useMemotestGameState({ initialValue, matchedCards }) {
 
     const restartGame = () => {
         setGameRestarted(prevState => !prevState);
+<<<<<<< HEAD
         setGameStarted(true);
         setGameEnded(false);
         setCards([]);
+=======
+        setGameEnded(false);
+        setGameStarted(true);
+        setCards([]);
+        cleanMatchedPairs();
+        setUnflippedCardSprite(null);
+
+        gameEndedSound.current.pause();
+        gameEndedSound.current.currentTime = 0;
+>>>>>>> 278646294697e1011ce21f235d0af2f6d0c79250
     };
 
     useEffect(() => {
@@ -34,7 +45,11 @@ function useMemotestGameState({ initialValue, matchedCards }) {
 
     useEffect(() => {
         if (matchedCards.length === MAX_MATCHED_CARDS) {
+<<<<<<< HEAD
             gameEndedSound.play();
+=======
+            gameEndedSound.current.play();
+>>>>>>> 278646294697e1011ce21f235d0af2f6d0c79250
             setGameStarted(false);
             setGameEnded(true);
         }

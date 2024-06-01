@@ -5,7 +5,7 @@ import worldCupTrohpy from '../../assets/images/misc/world-cup-trophy.png';
 import './Banner.css';
 import PropTypes from 'prop-types';
 
-function Banner({ startGame, gameRestarted, gameStarted, gameEnded, matchedPairs, bannerOpacity }) {
+function Banner({ startGame, restartGame, gameStarted, gameEnded, matchedPairs, bannerOpacity }) {
     return(
         <div id="banner" className="banner-container banner-background alert alert-dark container" style={{ opacity: bannerOpacity }}> 
             <div className="row">
@@ -14,8 +14,8 @@ function Banner({ startGame, gameRestarted, gameStarted, gameEnded, matchedPairs
                 </div>
                 <div className="col-4 text-center">
                     <div className="banner-text">Memotest</div>
-                    {gameStarted && <StarRow matchedPairs={matchedPairs}/>}
-                    {gameEnded && <StartButton value="Restart Game" onClick={gameRestarted}/>}
+                    {gameStarted && !gameEnded && <StarRow matchedPairs={matchedPairs}/>}
+                    {gameEnded && <StartButton value="Restart Game" onClick={restartGame}/>}
                     {<StartButton value="Start Game" onClick={startGame}/>}       
                 </div>
                 <div className="col-4 text-start">

@@ -83,7 +83,5 @@ function getPlayerName(card){
 
 export { 
     getCards,
-    getSetOfCards, 
-    shuffleArray, 
-    getPlayerName
+    getPlayerName,
 };

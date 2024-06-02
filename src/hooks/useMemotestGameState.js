@@ -22,10 +22,6 @@ function useMemotestGameState({ initialValue, matchedCards, cleanMatchedPairs })
     };
 
     const restartGame = () => {
-        setGameRestarted(prevState => !prevState);
-        setGameStarted(true);
-        setGameEnded(false);
-        setCards([]);
         setGameEnded(false);
         setGameStarted(true);
         setCards([]);
@@ -42,10 +38,10 @@ function useMemotestGameState({ initialValue, matchedCards, cleanMatchedPairs })
 
     useEffect(() => {
         if (matchedCards.length === MAX_MATCHED_CARDS) {
-            gameEndedSound.play();
-            gameEndedSound.current.play();
             setGameStarted(false);
             setGameEnded(true);
+
+            gameEndedSound.current.play();
         }
     }, [matchedCards]);
 

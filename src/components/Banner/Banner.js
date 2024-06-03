@@ -6,7 +6,7 @@ import "./Banner.css";
 import PropTypes from "prop-types";
 import { useEffect } from "react"
 
-function Banner({ startGame, restartGame, gameStarted, gameEnded, matchedPairs, bannerOpacity }) {
+function Banner({ startGame, restartGame, gameStarted, gameEnded, matchedPairs, bannerOpacity, nullOpacity }) {
     return(
         <div id="banner" className="banner-container banner-background alert alert-dark container" style={{ opacity: bannerOpacity }}> 
             <div className="row">
@@ -14,9 +14,9 @@ function Banner({ startGame, restartGame, gameStarted, gameEnded, matchedPairs, 
                     <ImageContainer src={worldCupTrohpy} alt={"world-cup"} className={"world-cup"}/>
                 </div>
                 <div className="col-4 text-center">
-                    <div className="banner-text">{"Memotest"}</div>
+                    <div className="banner-text">{nullOpacity ? "You win !" : "Memotest"}</div>
                     {gameStarted && !gameEnded && <StarRow matchedPairs={matchedPairs}/>}
-                    {gameEnded && <StartButton value="Restart Game" onClick={restartGame}/>}
+                    {gameEnded && nullOpacity && <StartButton value="Restart Game" onClick={restartGame}/>}
                     {<StartButton value="Start Game" onClick={startGame}/>}       
                 </div>
                 <div className="col-4 text-start">

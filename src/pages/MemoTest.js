@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../components/Banner/Banner"
 import Board from "../components/Board/Board"
-import { useMemotestGameState, useMatchingState, useOpacityState, useBodyBackground } from "../hooks/index";
+import { useMemotestGameState, useMatchingState, useOpacityState, useBodyBackground, useVisibilityState } from "../hooks/index";
 
 function Memotest() {
     const { activeCards, matchedPairs, handleMatching, cleanMatchedPairs } = useMatchingState();
@@ -18,7 +18,7 @@ function Memotest() {
         matchedCards: matchedPairs, 
         cleanMatchedPairs 
     });
-    const { opacity } = useOpacityState({ gameEnded });
+    const { opacity, isNullOpacity } = useOpacityState({ gameEnded, gameStarted });
 
     useBodyBackground({ gameHasEnded: gameEnded });
 
@@ -31,6 +31,7 @@ function Memotest() {
                 gameEnded={gameEnded}
                 matchedPairs={matchedPairs}
                 bannerOpacity={opacity}
+                nullOpacity={isNullOpacity}
             ></Banner>
             <Board 
                 gameStarted={gameStarted} 

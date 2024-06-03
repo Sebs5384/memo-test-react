@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
-function useOpacityState({ gameEnded }) {
+function useOpacityState({ gameEnded, gameStarted }) {
     const [opacity, setOpacity] = useState(1);
     const [opacityTransition, setOpacityTransition] = useState("decrease");
+    const [isNullOpacity, setIsNullOpacity] = useState(gameEnded);
 
     useEffect(() => {
         if(gameEnded) {
@@ -35,7 +36,18 @@ function useOpacityState({ gameEnded }) {
         setOpacityTransition("decrease");
     }, [gameEnded]);
 
-    return { opacity };
+    useEffect(() => {
+        const NULL_OPACITY = opacity === 0;
+        
+        if(NULL_OPACITY && isNullOpacity) {
+            setIsNullOpacity(true);
+        } else if(gameStarted) {
+            setIsNullOpacity(false);
+        };
+
+    }, [opacity]);
+
+    return { opacity, isNullOpacity };
 };
 
 export default useOpacityState;

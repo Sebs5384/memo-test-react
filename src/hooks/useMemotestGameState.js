@@ -39,7 +39,6 @@ function useMemotestGameState({ initialValue, matchedCards, cleanMatchedPairs })
     useEffect(() => {
         if (matchedCards.length === MAX_MATCHED_CARDS) {
             setGameEnded(true);
-
             gameEndedSound.current.play();
         }
     }, [matchedCards]);

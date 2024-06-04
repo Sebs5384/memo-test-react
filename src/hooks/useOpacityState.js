@@ -39,13 +39,15 @@ function useOpacityState({ gameEnded, gameStarted }) {
     useEffect(() => {
         const NULL_OPACITY = opacity === 0;
         
-        if(NULL_OPACITY && isNullOpacity) {
+        if(NULL_OPACITY && gameEnded) {
             setIsNullOpacity(true);
-        } else if(gameStarted) {
-            setIsNullOpacity(false);
         };
 
-    }, [opacity]);
+        if(gameStarted) {
+            setIsNullOpacity(false);
+        }
+
+    }, [opacity, gameStarted]);
 
     return { opacity, isNullOpacity };
 };

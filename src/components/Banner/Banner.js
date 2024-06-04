@@ -14,7 +14,7 @@ function Banner({ startGame, restartGame, gameStarted, gameEnded, matchedPairs, 
                 </div>
                 <div className="col-4 text-center">
                     <div className="banner-text">{nullOpacity ? "You win !" : "Memotest"}</div>
-                    {gameStarted && !gameEnded && !nullOpacity && <StarRow matchedPairs={matchedPairs}/>}
+                    {(gameStarted && !gameEnded) || (gameEnded && !nullOpacity) ? <StarRow matchedPairs={matchedPairs}/> : null }
                     {gameEnded && nullOpacity && <StartButton value="Restart Game" onClick={restartGame}/>}
                     {<StartButton value="Start Game" onClick={startGame}/>}
                 </div>

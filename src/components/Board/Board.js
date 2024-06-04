@@ -32,8 +32,13 @@ function Board({ gameStarted, gameEnded, cards, backCardSprite, activeCards, mat
 };
 Board.propTypes = {
     gameStarted: PropTypes.bool,
+    gameEnded: PropTypes.bool,
     cards: PropTypes.array,
-    backCardSprite: PropTypes.string
+    backCardSprite: PropTypes.string,
+    activeCards: PropTypes.array,
+    matchedPairs: PropTypes.array,
+    handleMatching: PropTypes.func,
+    boardOpacity: PropTypes.number
 };
 
 export default Board;   

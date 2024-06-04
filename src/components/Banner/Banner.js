@@ -4,7 +4,6 @@ import ImageContainer from "../ImageContainer/ImageContainer";
 import worldCupTrohpy from "../../assets/images/misc/world-cup-trophy.png";
 import "./Banner.css";
 import PropTypes from "prop-types";
-import { useEffect } from "react"
 
 function Banner({ startGame, restartGame, gameStarted, gameEnded, matchedPairs, bannerOpacity, nullOpacity }) {
     return(
@@ -15,9 +14,9 @@ function Banner({ startGame, restartGame, gameStarted, gameEnded, matchedPairs, 
                 </div>
                 <div className="col-4 text-center">
                     <div className="banner-text">{nullOpacity ? "You win !" : "Memotest"}</div>
-                    {gameStarted && !gameEnded && <StarRow matchedPairs={matchedPairs}/>}
+                    {gameStarted && !gameEnded && !nullOpacity && <StarRow matchedPairs={matchedPairs}/>}
                     {gameEnded && nullOpacity && <StartButton value="Restart Game" onClick={restartGame}/>}
-                    {<StartButton value="Start Game" onClick={startGame}/>}       
+                    {<StartButton value="Start Game" onClick={startGame}/>}
                 </div>
                 <div className="col-4 text-start">
                     <ImageContainer src={worldCupTrohpy} alt={"world-cup"} className={"world-cup"}/>
@@ -32,7 +31,8 @@ Banner.propTypes = {
     gameStarted: PropTypes.bool,
     gameEnded: PropTypes.bool,
     matchedPairs: PropTypes.array,
-    bannerOpacity: PropTypes.number
+    bannerOpacity: PropTypes.number,
+    nullOpacity: PropTypes.bool
 };
 
 export default Banner;

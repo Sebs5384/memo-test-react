@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { getCards } from "../utils/general"
+import getCards from "../utils/general"
 import argentinianChantSound from "../assets/audio/argentina-chant.mp3";
 
 function useMemotestGameState({ initialValue, matchedCards, cleanMatchedPairs }) {

@@ -22,16 +22,25 @@ function getCards(gameStatus) {
 };
 
 function getPlayerCards(cards = playersName) {
-    const playerCards = cards.map((card) => {
-        const playerCard = require(`../assets/images/players/${card}.jpg`);
-        return  playerCard;
+    const playerPathImages = cards.map((card) => {
+        const playerPathImage = require(`../assets/images/players/${card}.jpg`);
+        return  playerPathImage;
     });
     
-    const shuffledPlayerCards = shuffleArray(playerCards);
+    const shuffledPlayerCards = shuffleArray(playerPathImages);
     const setOfCards = getSetOfCards(shuffledPlayerCards);
     const shuffledSetOfCards = shuffleArray(setOfCards);    
 
-    return shuffledSetOfCards;
+    const playerCards = shuffledSetOfCards.map((card) => {
+        const { playerSpriteName, playerNameWithSuffix } = getPlayerName(card);
+    
+        return {
+            spriteName: playerSpriteName,
+            nameWithSuffix: playerNameWithSuffix 
+        };
+    });
+
+    return playerCards
 };
 
 function getSetOfCards(cards){
@@ -81,7 +90,4 @@ function getPlayerName(card){
     return { playerSpriteName, playerNameWithSuffix }
 };
 
-export { 
-    getCards,
-    getPlayerName,
-};
+export default getCards;

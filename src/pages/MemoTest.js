@@ -1,13 +1,12 @@
 import React from "react";
 import Banner from "../components/Banner/Banner"
 import Board from "../components/Board/Board"
-import { useMemotestGameState, useMatchingState, useOpacityState, useBodyBackground, useVisibilityState } from "../hooks/index";
+import { useMemotestGameState, useMatchingState, useOpacityState, useBodyBackground } from "../hooks/index";
 
 function Memotest() {
     const { activeCards, matchedPairs, handleMatching, cleanMatchedPairs } = useMatchingState();
     const { 
-        gameStarted, 
-        gameRestarted, 
+        gameStarted,  
         gameEnded, 
         cards, 
         unflippedCardSprite, 

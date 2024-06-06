@@ -13,10 +13,10 @@ const playersName = [
     "player-12-scaloni"
 ];
 
-function getCards(gameStatus) {
+function getCards(gameStarted, gameEnded) {
     const playerCards = getPlayerCards();
     const unflippedCardSprite = getUnflippedCard();
-    const cards = gameStatus ? playerCards : Array(12).fill(unflippedCardSprite);
+    const cards = gameStarted || gameEnded ? playerCards : Array(12).fill(unflippedCardSprite);
 
     return { cards, unflippedCardSprite };
 };
@@ -31,12 +31,14 @@ function getPlayerCards(cards = playersName) {
     const setOfCards = getSetOfCards(shuffledPlayerCards);
     const shuffledSetOfCards = shuffleArray(setOfCards);    
 
-    const playerCards = shuffledSetOfCards.map((card) => {
+    const playerCards = shuffledSetOfCards.map((card, index) => {
         const { playerSpriteName, playerNameWithSuffix } = getPlayerName(card);
-    
+        const playerCardPathImage = playerPathImages[index];
+
         return {
             spriteName: playerSpriteName,
-            nameWithSuffix: playerNameWithSuffix 
+            nameWithSuffix: playerNameWithSuffix,
+            playerCard: playerCardPathImage
         };
     });
 

@@ -8,16 +8,16 @@ function Board({ gameStarted, gameEnded, cards, backCardSprite, activeCards, mat
             <div id="board" style={{ opacity: boardOpacity }}>
                 <div className="row gx-1">
                     {Object.entries(cards).map(([key, card], index) => {
-                        const { spriteName, nameWithSuffix } = card;
+                        const { spriteName, nameWithSuffix, playerCard } = card;	
                         return (
                             <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container board-container"}>
                                 <Card 
                                     cardKey={`${nameWithSuffix}`}
-                                    image={spriteName}
+                                    image={gameEnded ? playerCard : spriteName}
                                     backCardSprite={backCardSprite}
                                     gameStarted={gameStarted}
-                                    isMatching={matchedPairs.includes(nameWithSuffix)}
-                                    isActive={activeCards.includes(nameWithSuffix)}
+                                    isMatching={gameEnded ? true : matchedPairs.includes(nameWithSuffix)}
+                                    isActive={gameEnded ? true : activeCards.includes(nameWithSuffix)}
                                     handleMatching={handleMatching}
                                 />
                             </div>

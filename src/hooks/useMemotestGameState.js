@@ -11,8 +11,8 @@ function useMemotestGameState({ initialValue, matchedCards, cleanMatchedPairs })
     const gameEndedSound = useRef(new Audio(argentinianChantSound));
     const MAX_MATCHED_CARDS = 12;
 
-    const generateCards = (gameStatus) => {
-        const { cards, unflippedCardSprite } = getCards(gameStatus);
+    const generateCards = (gameStarted, gameEnded) => {
+        const { cards, unflippedCardSprite } = getCards(gameStarted, gameEnded);
         setCards(cards);
         setUnflippedCardSprite(unflippedCardSprite);
     };
@@ -34,9 +34,8 @@ function useMemotestGameState({ initialValue, matchedCards, cleanMatchedPairs })
     };
 
     useEffect(() => {
-        setGameRestarted(false);
-        generateCards(gameStarted);
-    }, [gameStarted, gameRestarted]);
+        generateCards(gameStarted, gameEnded);
+    }, [gameStarted, gameRestarted, gameEnded]);
 
     useEffect(() => {
         if (matchedCards.length === MAX_MATCHED_CARDS) {

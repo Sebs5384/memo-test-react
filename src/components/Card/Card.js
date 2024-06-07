@@ -16,7 +16,7 @@ function Card({ cardKey, image, backCardSprite, gameStarted, isMatching, isActiv
                 alt={"unflipped-card"} 
                 className={cx("memo-card front-card", {
                     "flipped" : isActive || isMatching,
-                    "unclickable": !gameStarted || isMatching
+                    "unclickable": !gameStarted || isMatching || isActive
                 })} 
                 onClick={cardOnClick}
             />
@@ -25,7 +25,7 @@ function Card({ cardKey, image, backCardSprite, gameStarted, isMatching, isActiv
                 alt={"card"} 
                 className={cx("memo-card overlay-card", {
                     "flipped": isActive || isMatching,
-                    "unclickable": !gameStarted || isMatching
+                    "unclickable": !gameStarted || isMatching || isActive
                 })} 
                 onClick={cardOnClick}
             />

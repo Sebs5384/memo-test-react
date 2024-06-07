@@ -13,10 +13,10 @@ const playersName = [
     "player-12-scaloni"
 ];
 
-function getCards(gameStarted, gameEnded) {
+function getCards(gameStarted) {
     const playerCards = getPlayerCards();
     const unflippedCardSprite = getUnflippedCard();
-    const cards = gameStarted || gameEnded ? playerCards : Array(12).fill(unflippedCardSprite);
+    const cards = gameStarted ? playerCards : Array(12).fill(unflippedCardSprite);
 
     return { cards, unflippedCardSprite };
 };

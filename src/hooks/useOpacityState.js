@@ -25,7 +25,7 @@ function useOpacityState({ gameEnded, gameStarted }) {
                         return newOpacity;
                     };
                 });
-            }, 1500);
+            }, 700);
 
             return () => clearInterval(opacityChange);
         };

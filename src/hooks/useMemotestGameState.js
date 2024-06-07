@@ -12,7 +12,9 @@ function useMemotestGameState({ initialValue, matchedCards, cleanMatchedPairs })
     const MAX_MATCHED_CARDS = 12;
 
     const generateCards = (gameStarted, gameEnded) => {
-        const { cards, unflippedCardSprite } = getCards(gameStarted, gameEnded);
+        if(gameEnded) return;
+        
+        const { cards, unflippedCardSprite } = getCards(gameStarted);
         setCards(cards);
         setUnflippedCardSprite(unflippedCardSprite);
     };

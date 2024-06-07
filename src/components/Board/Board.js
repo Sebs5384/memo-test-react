@@ -2,7 +2,7 @@ import Card from "../Card/Card";
 import "./Board.css";
 import PropTypes from "prop-types";
 
-function Board({ gameStarted, gameEnded, cards, backCardSprite, activeCards, matchedPairs, handleMatching, boardOpacity }) {
+function Board({ gameStarted, gameEnded, cards, backCardSprite, activeCards, matchedPairs, handleMatching, boardOpacity, nullOpacity }) {
     return (
         <div className={"container text-center"}>
             <div id="board" style={{ opacity: boardOpacity }}>
@@ -13,11 +13,11 @@ function Board({ gameStarted, gameEnded, cards, backCardSprite, activeCards, mat
                             <div key={`memo-cards-${index + 1}`} className={"col-3 gy-1 cards-container board-container"}>
                                 <Card 
                                     cardKey={`${nameWithSuffix}`}
-                                    image={gameEnded ? playerCard : spriteName}
+                                    image={nullOpacity ? playerCard : spriteName}
                                     backCardSprite={backCardSprite}
                                     gameStarted={gameStarted}
-                                    isMatching={gameEnded ? true : matchedPairs.includes(nameWithSuffix)}
-                                    isActive={gameEnded ? true : activeCards.includes(nameWithSuffix)}
+                                    isMatching={nullOpacity ? true : matchedPairs.includes(nameWithSuffix)}
+                                    isActive={nullOpacity ? true : activeCards.includes(nameWithSuffix)}
                                     handleMatching={handleMatching}
                                 />
                             </div>

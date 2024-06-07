@@ -41,6 +41,7 @@ function Memotest() {
                 matchedPairs={matchedPairs} 
                 handleMatching={handleMatching}
                 boardOpacity={opacity}
+                nullOpacity={isNullOpacity}
             ></Board>
         </>
     );

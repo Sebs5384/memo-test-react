@@ -1,0 +1,30 @@
+.memo-card {
+    width: 140px;
+    height: 180px;
+    border-color: gold;
+    border-style: inset;
+    border-radius: 2%;
+}
+
+.front-card {
+    transform: rotateY(180deg);
+    transition: 1s;
+}
+
+.overlay-card {
+    transform: rotateY(180deg);
+    transition: 1s;
+    backface-visibility: hidden;
+    position: absolute;
+    left: 92px;
+}
+
+.flipped {
+    transform: rotateY(0deg);
+}
+
+.unclickable {
+    pointer-events: none;
+}
+
+

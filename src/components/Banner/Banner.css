@@ -1,0 +1,13 @@
+.banner-background {
+    background-image: url(../../assets/images/misc/qatar-background.jpg)
+}
+
+.banner-text {
+    color: gold;
+    font-family: Verdana, sans-serif;
+    font-size: 25px;
+}
+
+.banner-container {
+    height: 100px;
+}
